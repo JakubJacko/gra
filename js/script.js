@@ -6,23 +6,27 @@ const gamePlan = {
         this.context = this.canvas.getContext("2d");
         document.body.append(this.canvas);
         window.addEventListener('keydown', (e) => {
-            // gamePlan.key = e.keyCode;
+            player.changePos(e.key);
         })
         window.addEventListener('keyup', (e) => {
-            gamePlan.key = false;
+            player.changePos(e.key);
         })
     },
 
     update() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        player.y++;
+        // player.x++;
         player.update();
+        // player.speedX = 0;
+        // if (gamePlan.key && gamePlan.key == 39) {
+        //     player.speedX = player.speedX+1;
+        // }
     },
 
     interwaval : setInterval(() => {
-        console.log('interwaval');
+        // console.log('interwaval');
         gamePlan.update();
-    },1000),
+    },25),
 
 
 }
@@ -30,5 +34,6 @@ const gamePlan = {
 
 gamePlan.init()
 
-const player = new Player(0, 0, 10, 120);
-console.log(player);
+const player = new Player(50, 150, 40, 50);
+// const obstacles = [new Rock()];
+// console.log(player);
