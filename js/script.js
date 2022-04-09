@@ -17,10 +17,14 @@ const gamePlan = {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         // player.x++;
         player.update();
-        // player.speedX = 0;
-        // if (gamePlan.key && gamePlan.key == 39) {
-        //     player.speedX = player.speedX+1;
-        // }
+        for(const o of obstacles){
+            o.update();
+            if(o.x <= 0 - o.w){
+                console.log('remove');
+                // obstacles.shift();
+                o.x = 470;
+            }
+        }
     },
 
     interwaval : setInterval(() => {
@@ -35,5 +39,8 @@ const gamePlan = {
 gamePlan.init()
 
 const player = new Player(50, 150, 40, 50);
-// const obstacles = [new Rock()];
+const obstacles = [
+    new Rock(250, 150, 50, 50),
+    new Rock(350, 100, 60, 40),
+];
 // console.log(player);

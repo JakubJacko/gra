@@ -63,5 +63,6 @@ class Rock {
     update(){
         this.ctx.fillStyle = 'green';
         this.ctx.fillRect(this.x, this.y, this.w, this.h);
+        this.x -= 3;
     }
 }
